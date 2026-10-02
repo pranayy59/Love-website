@@ -1,0 +1,9 @@
+'use client';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { Heart,ArrowRight } from 'lucide-react';
+import { Cat,Envelope } from './Illustrations';
+import { Experience } from './Experience';
+import { newExperience } from '@/lib/experience';
+import { useSavedMeter } from '@/lib/meter-storage';
+export function HomePage(){const search=useSearchParams();const meter=useSavedMeter();if(search.has('meter')){const config=newExperience();config.loveMeter={...meter,minimum:100};config.nickname='You';return <Experience config={config}/>;}return <div className="home-page"><header className="setup-header"><Link href="/" className="brand"><Heart size={21}/>a little love test.</Link><Link href="/dashboard">My love tests ↗</Link></header><main className="home-hero"><div><span className="eyebrow">FOR YOUR VERY FAVORITE PERSON</span><h1>A little test.<br/>A whole lot<br/>of <em>love.</em></h1><p>Turn your words, memories, and inside jokes into a little adventure made just for them.</p><Link href="/create" className="cute-button">Create a Love Test <Heart size={16}/></Link><Link className="home-demo" href="/demo">Take a little peek <ArrowRight size={15}/></Link><div className="home-details"><span>♡ Made by you</span><span>♡ Opened with a smile</span><span>♡ Kept forever</span></div></div><div className="home-art"><span className="handwritten">a little something, just for you</span><div className="paper-card"><span className="tape tape-left"/><div className="eyebrow">YOUR OWN LITTLE LOVE STORY</div><h2>Hey, My Love! ♡</h2><Cat/><p className="handwritten">I made a little something for you…</p><div className="home-art-button">Let the butterflies begin ♡</div></div><div className="home-envelope"><Envelope/></div></div></main><footer className="setup-footer">A DIGITAL LOVE LETTER. WITH A LITTLE PLAYFUL MAGIC.</footer></div>}

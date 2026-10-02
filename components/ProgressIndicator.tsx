@@ -1,0 +1,2 @@
+const defaultLabels=['Hello','Love meter','Questions','Draw a heart','Your bouquet','Surprise','Love letter','Forever'];
+export function ProgressIndicator({scene,labels=defaultLabels}:{scene:number;labels?:string[]}){return <nav className="progress-indicator" aria-label="Your love story progress">{labels.map((label,i)=><span key={label} className={i===scene?'current':i<scene?'complete':''} aria-current={i===scene?'step':undefined} aria-label={`${i+1}. ${label}${i<scene?', completed':''}`}>{i===scene?'♥':''}</span>)}</nav>}
